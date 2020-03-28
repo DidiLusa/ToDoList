@@ -32,10 +32,21 @@ class Tache
     private $jour;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="taches_crees")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="taches_crees",
+     * cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $createur;
+
+    /**
+     * @ORM\Column(type="time", nullable=true)
+     */
+    private $heure_debut;
+
+    /**
+     * @ORM\Column(type="time", nullable=true)
+     */
+    private $heure_fin;
 
     public function getId(): ?int
     {
@@ -86,6 +97,30 @@ class Tache
     public function setCreateur(?User $createur): self
     {
         $this->createur = $createur;
+
+        return $this;
+    }
+
+    public function getHeureDebut(): ?\DateTimeInterface
+    {
+        return $this->heure_debut;
+    }
+
+    public function setHeureDebut(?\DateTimeInterface $heure_debut): self
+    {
+        $this->heure_debut = $heure_debut;
+
+        return $this;
+    }
+
+    public function getHeureFin(): ?\DateTimeInterface
+    {
+        return $this->heure_fin;
+    }
+
+    public function setHeureFin(?\DateTimeInterface $heure_fin): self
+    {
+        $this->heure_fin = $heure_fin;
 
         return $this;
     }

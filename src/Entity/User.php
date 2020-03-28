@@ -5,10 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -23,6 +25,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $prenom;
 
     /**
      * @ORM\Column(type="json")
@@ -34,16 +46,6 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nom;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $prenom;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Tache", mappedBy="createur")
