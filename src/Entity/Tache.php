@@ -48,6 +48,13 @@ class Tache
      */
     private $heure_fin;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="taches",
+     * cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +128,18 @@ class Tache
     public function setHeureFin(?\DateTimeInterface $heure_fin): self
     {
         $this->heure_fin = $heure_fin;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
