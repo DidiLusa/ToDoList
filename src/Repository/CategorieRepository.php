@@ -47,4 +47,35 @@ class CategorieRepository extends ServiceEntityRepository
         ;
     }
     */
+    
+    public function choixCategorie(){
+        
+        //obtenir doctrine pour insérer dans la db : 
+        $db = $this->getEntityManager();
+        
+        $cat1 = new Categorie();
+        $cat1->setNom('Sport');
+        $cat2 = new Categorie();
+        $cat2->setNom('Boulot');
+        $cat3 = new Categorie();
+        $cat3->setNom('Formation');
+        $cat4 = new Categorie();
+        $cat4->setNom('Famille');
+        $cat5 = new Categorie();
+        $cat5->setNom('Loisir');
+        $cat6 = new Categorie();
+        $cat6->setNom('Course');
+        $cat7 = new Categorie();
+        $cat7->setNom('Autre');
+        
+        $db->persist($cat1);
+        $db->persist($cat2);
+        $db->persist($cat3);
+        $db->persist($cat4);
+        $db->persist($cat5);
+        $db->persist($cat6);
+        $db->persist($cat7);
+        
+        $db->flush();
+    }
 }
