@@ -3,6 +3,15 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+    <h1>Bienvenue sur le site My To do list</h1>
+   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis voluptatum
+    eos voluptatibus libero consequatur amet quo ipsa molestiae commodi? Maxime 
+    rem magnam recusandae consectetur consequuntur eius error maiores dolore odio. 
+    Debitis id est facilis ratione, magni ipsam reiciendis tempore sed corporis 
+    consectetur architecto non veniam soluta, consequatur, laudantium quae. 
+    Molestiae nulla repellat aut accusantium quam officiis optio repudiandae facilis recusandae.</p>
+   
+   <h3 class="h3 mb-3 font-weight-normal">Connexion</h3>
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -14,7 +23,6 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Page de connexion</h1>
     <label for="inputEmail">Votre emaill</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
     <label for="inputPassword">Votre mot de passe</label>
@@ -39,4 +47,6 @@
         Connexion
     </button>
 </form>
+    <p>Pas encore de compte ? </p>
+    <a href="{{ path('app_register')}}">Inscrivez-vous</a>
 {% endblock %}

@@ -20,6 +20,6 @@ class UserController extends AbstractController
         $vars = ['user'=>$user];
         
         
-        return $this->render('user/index.html.twig',$vars);
+        return $this->render('user/moncompte.html.twig',$vars);
     }
 }
